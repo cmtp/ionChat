@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,7 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  homeForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder
+  ) {
+    this.homeForm = this.formBuilder.group({
+      username: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
@@ -22,6 +32,9 @@ export class HomePage {
   }
 
   goToChat() {
-    this.navCtrl.setRoot("ChatPage");
+    console.log(this.homeForm.value);
+    this.navCtrl.setRoot("ChatPage", {
+      username: this.homeForm.value.username
+    });
   }
 }

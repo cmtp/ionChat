@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,11 +15,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: string = "";
+  messages: any[] = [];
+  chatForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder
+  ){
+    this.user = this.navParams.get('username');
+    this.chatForm = this.formBuilder.group({
+      message: ['', Validators.required ]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }
-
+  sendMessage() {
+    this.messages.push({
+      user: this.user,
+      text: this.chatForm.value.message
+    });
+    this.chatForm.reset();
+  }
 }

@@ -6,8 +6,10 @@
 <ion-content padding>
   <h1>Welcome to the ion chat!</h1>
   <img src="assets/images/hospital.svg" alt="">
-  <ion-input type="text" placeholder="Type your Username"></ion-input>
-  <button ion-button block (click)="goToChat()">
-    Go!
-  </button>
+  <form [formGroup]="homeForm" (ngSubmit)="goToChat()">
+    <ion-input formControlName="username" type="text" placeholder="Type your Username"></ion-input>
+    <button ion-button block [disabled]="homeForm.invalid">
+      Go!
+    </button>
+  </form>
 </ion-content>
