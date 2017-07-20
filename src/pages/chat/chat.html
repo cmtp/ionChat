@@ -15,9 +15,15 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let message of messages">
-      <ion-icon name="leaf" *ngIf="message.user !== user" item-start></ion-icon>
+      <!--<ion-icon name="leaf" *ngIf="message.user !== user" item-start></ion-icon>-->
+      <ion-avatar *ngIf="message.user !== user" item-start align-items-center>
+        <div class="avatar-text color-host">{{ message.start }}</div>
+      </ion-avatar>
       <p>{{ message.text }}</p>
-      <ion-icon name="rose" *ngIf="message.user === user" item-end></ion-icon>
+      <ion-avatar *ngIf="message.user === user" item-end>
+        <div class="avatar-text color-guest">{{ message.start }}</div>
+      </ion-avatar>
+      <!--<ion-icon name="rose" *ngIf="message.user === user" item-end></ion-icon>-->
     </ion-item>
   </ion-list>
 </ion-content>

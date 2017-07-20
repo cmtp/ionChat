@@ -4,3 +4,23 @@ page-chat {
 .chat-input {
 
 }
+.list-md .item-block .item-inner {
+  border-bottom: none;
+}
+.avatar-text {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+  padding: 1em;
+  text-align: center;
+  text-transform: capitalize;
+}
+.color-guest {
+  background: #7643af;
+}
+.color-host {
+  background: #4483f2;
+}

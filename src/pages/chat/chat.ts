@@ -37,7 +37,11 @@ export class ChatPage {
   }
 
   ionViewDidLoad() {
+      if ( undefined  === this.navParams.get('username')) {
+        this.navCtrl.setRoot('HomePage');
+      }
     this.connection = this.chatService.getMessages().subscribe(message => {
+      console.log(message);
       this.messages.push(message);
     });
     console.log('ionViewDidLoad ChatPage');
@@ -48,8 +52,10 @@ export class ChatPage {
   }
 
   sendMessage() {
+    console.log(this.user.substr(0, 1));
     this.message = {
       user: this.user,
+      start: this.user.substr(0, 1),
       text: this.chatForm.value.message
     };
     this.chatService.sendMessage(this.message);
