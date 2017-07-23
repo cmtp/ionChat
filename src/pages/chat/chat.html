@@ -19,7 +19,9 @@
       <ion-avatar *ngIf="message.user !== user" item-start align-items-center>
         <div class="avatar-text color-host">{{ message.start }}</div>
       </ion-avatar>
-      <p>{{ message.text }}</p>
+      <!-- //TODO: to get better this part -->
+      <p *ngIf="message.user !== user" item-start>{{ message.text }}</p>
+      <p *ngIf="message.user === user" item-end>{{ message.text }}</p>
       <ion-avatar *ngIf="message.user === user" item-end>
         <div class="avatar-text color-guest">{{ message.start }}</div>
       </ion-avatar>

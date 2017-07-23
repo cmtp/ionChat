@@ -1,15 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Ion Chat Demo</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <h1>Welcome to the ion chat!</h1>
-  <img src="assets/images/hospital.svg" alt="">
+  <p>Please insert your username and continue to the chat room.</p>
   <form [formGroup]="homeForm" (ngSubmit)="goToChat()">
-    <ion-input formControlName="username" type="text" placeholder="Type your Username"></ion-input>
-    <button ion-button block [disabled]="homeForm.invalid">
-      Go!
-    </button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 offset-4 col-md-2 offset-md-5>
+          <img src="assets/images/chat.svg" alt="">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-12 col-md-6 offset-md-3>
+          <ion-input formControlName="username" type="text" placeholder="Type your Username"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-12 col-md-6 offset-md-3>
+          <button ion-button block [disabled]="homeForm.invalid">
+            Go!
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>
